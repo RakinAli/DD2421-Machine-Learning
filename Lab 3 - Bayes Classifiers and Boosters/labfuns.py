@@ -177,7 +177,7 @@ def testClassifier(classifier, dataset='iris', dim=0, split=0.7, ntrials=100):
 
     X,y,pcadim = fetchDataset(dataset)
 
-    means = np.zeros(ntrials,);
+    means = np.zeros(ntrials,)
 
     for trial in range(ntrials):
 
@@ -284,7 +284,7 @@ class DecisionTreeClassifier(object):
 
     def trainClassifier(self, Xtr, yTr, W=None):
         rtn = DecisionTreeClassifier()
-        rtn.classifier = tree.DecisionTreeClassifier(max_depth=Xtr.shape[1]/2+1)
+        rtn.classifier = tree.DecisionTreeClassifier(max_depth=(int)(Xtr.shape[1]/2+1))
         if W is None:
             rtn.classifier.fit(Xtr, yTr)
         else:
