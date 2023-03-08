@@ -148,14 +148,11 @@ def mlParams(X, labels, W=None):
 
 
 def classifyBayes(X, prior, mu, sigma):
-
     Npts = X.shape[0]
     Nclasses, Ndims = np.shape(mu)
     logProb = np.zeros((Nclasses, Npts))
-
     # TODO: fill in the code to compute the log posterior logProb!
     # ==========================
-
     # Se equation (11)
     for class_iter in range(0, Nclasses):
         for data in range(Npts):
@@ -165,7 +162,6 @@ def classifyBayes(X, prior, mu, sigma):
             term3 = np.log(prior[class_iter])
             logProb[class_iter][data] = term1 + term2 + term3
     # ==========================
-
     # one possible way of finding max a-posteriori once
     # you have computed the log posterior
     h = np.argmax(logProb, axis=0)
@@ -244,9 +240,7 @@ def trainBoost(base_classifier, X, labels, T=10):
 
         # TODO: Fill in the rest, construct the alphas etc.
         # ==========================
-
         error = 0
-
         for i in range(len(vote)):
             wCur_curr = wCur[i]
             label_curr = labels[i]
@@ -397,3 +391,31 @@ class BoostClassifier(object):
 # visualize the test point together with the training points used to train
 # the class that the test point was classified to belong to
 # visualizeOlivettiVectors(xTr[yTr == yPr[testind],:], xTe[testind,:])
+
+
+# Do a merge sort on an array
+def mergesort(list):
+    if len(list) <= 1:
+        return list
+
+    middle = len(list) // 2
+    left = list[:middle]
+    right = list[middle:]
+
+    left = mergesort(left)
+    right = mergesort(right)
+    return list(merge(left, right))
+
+def merge(list):
+    result = []
+    i, j = 0, 0
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+    result += left[i:]
+    result += right[j:]
+    return result
