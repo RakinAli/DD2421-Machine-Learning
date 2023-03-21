@@ -11,15 +11,16 @@ The following topics in machine learning and computational intelligence are cove
 \item  bias and the trade-off of variance
 regression
 
-\item probabilistic methods
+* probabilistic methods
 
-\item Bayesian learning
 
-\item support vector machines
+* Bayesian learning
 
-\item artificial neural networks
+* Support vector machines
 
-\item ensemble methods
+* Artificial neural networks
+
+* ensemble methods
 
 \item dimensionality reduction
 
